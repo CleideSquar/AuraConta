@@ -1,0 +1,11 @@
+public class AuraConta {
+    @AuraEnabled
+    public static List<Account> getAccountNR() {
+        return [SELECT Name, Contatado__c, Rating FROM Account WHERE Contatado__c = 'Negociação' AND Rating = 'Hot' ORDER BY Contatado__c DESC LIMIT 5];
+    }
+}
+
+/*Teste para verificar classe apex, abrir janela anonima (CTRL + E) e inserir o código à seguir*/
+
+List<Account> accounts = AuraConta.getAccountNR();
+System.debug('Cliente Contatato?: '+ accounts);
